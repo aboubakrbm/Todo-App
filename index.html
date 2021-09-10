@@ -1,36 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Todo app</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="normalize.css">
+  <title>Todo app</title>
 </head>
+
 <body>
+  <section class="todo-head">
+  <div class="head">
+    <h1>TODO</h1>
+    <img src="images/icon-sun.svg" alt="switch to light mode">
+    </div>
+    <div class="todo-input">
+      <div class="radio">
+        <input class="" type="radio" name="check">
+      </div>
+      <input class="text" type="text" name="add-todo" placeholder="Create a new todo...">
+      <div class="delete add">
+        <img src="images/icon-cross.svg" alt="add task">
+      </div>
+    </div>
 
-  Todo
-
-  <!-- Add dynamic number --> items left
-
-  All
-  Active 
-  Completed
-
-  Clear Completed
-
-  Drag and drop to reorder list
-
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+    <div class="todo-input task">
+      <div class="radio">
+        <input class="" type="radio" name="check">
+      </div>
+      <input class="text" type="text" name="add-todo">
+      <div class="delete">
+        <img src="images/icon-cross.svg" alt="delet task">
+      </div>
+    </div>
+    <div class="todo-input end-list">
+      items left
+      <span dir="rtl">
+        Clear Compleated
+      </span>
+    </div>
+  </section>
+  <div class="todo-input footer">
+    <ul>
+      <li>All</li>
+      <li>Active</li>
+      <li>Completed</li>
+    </ul>
   </div>
+  <p>Drag and drop to reorder list</p>
 </body>
+
 </html>
