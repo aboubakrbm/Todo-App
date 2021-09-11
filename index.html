@@ -17,31 +17,32 @@
     <img src="images/icon-sun.svg" alt="switch to light mode">
     </div>
     <div class="todo-input">
-      <div class="radio">
-        <input class="" type="radio" name="check">
+      <div class="checkbox">
+        <input class="" type="checkbox" name="check">
       </div>
       <input class="text" type="text" name="add-todo" placeholder="Create a new todo...">
-      <div class="delete add">
+      <div id="add" class="delete add">
         <img src="images/icon-cross.svg" alt="add task">
       </div>
     </div>
 
     <div class="todo-input task">
-      <div class="radio">
-        <input class="" type="radio" name="check">
+      <div class="checkbox">
+        <input id="added" class="" type="checkbox" name="check">
       </div>
       <input class="text" type="text" name="add-todo">
       <div class="delete">
         <img src="images/icon-cross.svg" alt="delet task">
       </div>
     </div>
-    <div class="todo-input end-list">
-      items left
-      <span dir="rtl">
-        Clear Compleated
-      </span>
-    </div>
+    
   </section>
+  <div class="todo-input end-list">
+    items left
+    <span dir="rtl">
+      Clear Completed
+    </span>
+  </div>
   <div class="todo-input footer">
     <ul>
       <li>All</li>
@@ -50,6 +51,7 @@
     </ul>
   </div>
   <p>Drag and drop to reorder list</p>
+  <script src="main.js"></script>
 </body>
 
 </html>
