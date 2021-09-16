@@ -58,6 +58,7 @@ h1 {
   border-radius: 8px;
   margin: auto !important;
   position: relative;
+  box-shadow: 0 0 3px rgb(0, 0, 0);
 }
 .todo-input > .text {
   background-color: var(--Very-Dark-Desaturated-Blue);
@@ -66,6 +67,7 @@ h1 {
   letter-spacing: 1px;
   outline: none;
   margin-left: 10px !important;
+  width: 90%;
 }
 .todo-input > .text:hover {
   color: var(--Light-Grayish-Blue);
@@ -158,6 +160,7 @@ p {
     position: relative;
     bottom: 66px;
     padding: 1rem 0 !important;
+    box-shadow: 0 0;
   }
   ul:last-child {
     padding: 0 !important;
