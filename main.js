@@ -35,10 +35,9 @@ toggleMode.addEventListener("click", _ =>{
     let end_list = document.getElementsByClassName("end-list")[0];
     end_list.style.backgroundColor = 'hsl(0, 0%, 98%)';
     document.getElementsByClassName("footer")[0].style.backgroundColor = 'hsl(0, 0%, 98%)';
-    document.body.style.backgroundColor = "hsl(0, 0%, 98%)"
+    document.body.style.backgroundColor = "hsl(236, 33%, 92%)"
     document.getElementById('h1').classList.toggle("h1-light");
-    end_list.classList.toggle("end-list-light")
-     
+    end_list.classList.toggle("end-list-light") 
   }else{
     toggleMode.setAttribute("src", "images/icon-sun.svg");
     document.getElementsByClassName("todo-head")[0].style.backgroundImage = 'url("images/bg-mobile-dark.jpg")';
