@@ -42,6 +42,7 @@ body {
   background-size: auto;
   background-repeat: no-repeat;
   padding: 2.7em 2em 0;
+  transition: all .5s;
 }
 /************************************************************
     Header
@@ -59,9 +60,19 @@ h1 {
   letter-spacing: 1rem;
 }
 
+.animated-tgl-btn {
+  animation: mymove 1s;
+}
+@keyframes mymove {
+  0% {transform: scale(.8);}
+  50% {transform: scale(1.2);}
+  100% {transform: scale(1);}
+}
+
 .toggle-theme {
   flex-basis: 1%;
   cursor: pointer;
+
 }
 /************************************************************
 main global
@@ -222,11 +233,11 @@ end-list bar
   border-radius: 0 0 5px 5px;
 }
 
-#clear-completed {
+.clear-all-completed {
   cursor: pointer;
 }
 
-#clear-completed:hover,
+.clear-all-completed:hover,
 input[type="radio"]:hover + label {
   color: var(--color-text-active)
 }

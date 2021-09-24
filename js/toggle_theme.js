@@ -10,7 +10,7 @@ btn.addEventListener("click", changeTheme);
 function changeTheme() {
   // Toggle the .light-theme class on each click
   document.body.classList.toggle("light-theme");
-
+  
   // Let's say the theme is equal to dark
   let theme = "dark";
   // If the body contains the .light-theme class...
@@ -22,9 +22,14 @@ function changeTheme() {
   localStorage.setItem("theme", theme);
 
   // change icon on each click
-  if (btn.getAttribute("src") == "/images/icon-sun.svg")
+  if (btn.getAttribute("src") == "/images/icon-sun.svg") {
+    btn.classList.add("animated-tgl-btn");
     btn.setAttribute("src", "/images/icon-moon.svg");
-  else btn.setAttribute("src", "/images/icon-sun.svg");
+  } else {
+    btn.classList.add("animated-tgl-btn");
+    btn.setAttribute("src", "/images/icon-sun.svg");
+  }
+  btn.classList.remove("animated-tgl-btn");
 }
 
 // If the current theme in localStorage is "light"...
@@ -34,4 +39,3 @@ if (currentTheme == "light") {
   // and change the icon
   btn.setAttribute("src", "/images/icon-moon.svg");
 }
-
