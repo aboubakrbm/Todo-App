@@ -1,57 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="This is a todo app">
+    <link
+      rel="shortcut icon"
+      href="/images/favicon-32x32.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="/css/main.css" />
+    <script defer src="/js/toggle_theme.js"></script>
+    <script defer src="/js/main.js"></script>
+    <title>Todo app</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="normalize.css">
-  <title>Todo app</title>
-</head>
+  <body class="dark-theme">
+    <header>
+      <h1>TODO</h1>
 
-<body>
-  <section class="todo-head">
-  <div class="head">
-    <h1 id="h1">TODO</h1>
-    <img src="images/icon-sun.svg" alt="switch to light mode" id="toggle">
-    </div>
-    <div class="todo-input">
-      <div class="checkbox">
-        <input class="" type="checkbox" name="check">
-      </div>
-      <input class="text" type="text" name="add-todo" placeholder="Create a new todo...">
-      <div id="add" class="delete add">
-        <img src="images/icon-cross.svg" alt="add task">
-      </div>
-    </div>
+      <img
+        src="/images/icon-sun.svg"
+        alt="change theme button"
+        class="toggle-theme"
+      />
+    </header>
 
-    <div class="todo-input task">
-      <div class="checkbox">
-        <input id="added" class="" type="checkbox" name="check">
-      </div>
-      <input class="text" type="text" name="add-todo">
-      <div class="delete">
-        <img src="images/icon-cross.svg" alt="delet task">
-      </div>
-    </div>
-    
-  </section>
-  <div class="todo-input end-list">
-    items left
-    <span dir="rtl">
-      Clear Completed
-    </span>
-  </div>
-  <div class="todo-input footer">
-    <ul>
-      <li>All</li>
-      <li>Active</li>
-      <li>Completed</li>
-    </ul>
-  </div>
-  <p>Drag and drop to reorder list</p>
-  <script src="main.js"></script>
-</body>
+    <main>
+      <form class="bar" id="todo-input">
+        <input
+          class="text"
+          type="text"
+          name="add-todo"
+          placeholder="Create a new todo..."
+        />
+        <button type="submit" class="input-button" area-label="Add todo">
+          <img
+            class="cross add"
+            src="/images/icon-cross.svg"
+            alt="delet task"
+          />
+        </button>
+      </form>
 
+      <div class="nothing-to-do bar">
+        <p>Nothing To Do !</p>
+      </div>
+
+      <ul class="todo-list"></ul>
+
+      <div class="desktop-view">
+        <div class="end-list bar">
+          <span>
+            <span class="item-left">0</span> 
+            items left
+          </span>
+
+          <!-- <div class="filter bar"> -->
+          <div class="filter1">
+            <input type="radio" id="all" name="filter-item" checked/>
+            <label for="all">All</label>
+            <input type="radio" id="active" name="filter-item" />
+            <label for="active">Active</label>
+            <input type="radio" id="completed" name="filter-item" />
+            <label for="completed">Completed</label>
+          </div>
+          <!-- </div> -->
+
+          <span id="clear-completed">Clear Completed</span>
+        </div>
+      </div>
+
+      <div class="mobile-view">
+        <div class="end-list bar">
+          <span>
+            <span class="item-left">0</span> 
+            items left
+          </span>
+          <span id="clear-all"> Clear Completed </span>
+        </div>
+        <div class="filter bar">
+          <input type="radio" id="all" name="filter-item" />
+          <label for="all">All</label>
+          <input type="radio" id="active" name="filter-item" />
+          <label for="active">Active</label>
+          <input type="radio" id="completed" name="filter-item" />
+          <label for="completed">Completed</label>
+        </div>
+      </div>
+
+      <p class="reorder-instruction">Drag and drop to reorder list<br> &uarr; Under Construction &uarr;</p>
+    </main>
+  </body>
 </html>

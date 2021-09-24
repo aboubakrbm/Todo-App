@@ -1,0 +1,319 @@
+@import "reset.css";
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+
+.dark-theme {
+  --bg-img-desktop: url("/images/bg-desktop-dark.jpg");
+  --bg-img-mobile: url("/images/bg-mobile-dark.jpg");
+  --color-bg: hsl(235, 21%, 11%);
+  --color-surface: hsl(235, 24%, 19%);
+  --color-text-active: hsl(234, 39%, 85%);
+  --color-text-completed: hsl(233, 14%, 35%);
+  --color-text-1: hsl(235, 16%, 43%);
+  --color-border: #393a4b;
+  --box-shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.5);
+}
+
+.light-theme {
+  --bg-img-desktop: url("/images/bg-desktop-light.jpg");
+  --bg-img-mobile: url("/images/bg-mobile-light.jpg");
+  --color-bg: hsl(0, 0%, 98%);
+  --color-surface: hsl(0, 0%, 100%);
+  --color-text-active: hsl(235, 19%, 35%);
+  --color-text-completed: hsl(233, 11%, 84%);
+  --color-text-1: hsl(235, 9%, 61%);
+  --color-border: #e3e4f1;
+  --box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
+}
+
+:root {
+  --color-bright-blue: hsl(220, 98%, 61%);
+  --gradient-primary: linear-gradient(
+    to bottom right,
+    hsl(192, 100%, 67%),
+    hsl(280, 87%, 65%)
+  );
+}
+
+body {
+  font-size: 1.8rem;
+  font-family: "Josefin Sans", sans-serif;
+  background-color: var(--color-bg);
+  background-image: var(--bg-img-mobile);
+  background-size: auto;
+  background-repeat: no-repeat;
+  padding: 2.7em 2em 0;
+}
+/************************************************************
+    Header
+**********************/
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: white;
+  letter-spacing: 1rem;
+}
+
+.toggle-theme {
+  flex-basis: 1%;
+  cursor: pointer;
+}
+/************************************************************
+main global
+*********************/
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bar {
+  width: 100%;
+  background-color: var(--color-surface);
+  color: var(--color-text-1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
+}
+
+.cross:hover {
+  cursor: pointer;
+}
+/************************************************************
+    input bar
+*********************/
+#todo-input {
+  margin-bottom: 2rem;
+  justify-content: flex-start;
+}
+
+.text,
+button {
+  background-color: var(--color-surface);
+  border: none;
+}
+
+.input-button {
+  transform: rotate(45deg);
+  padding: 0;
+}
+
+.text::placeholder {
+  color: var(--color-text-1);
+}
+
+.text {
+  color: var(--color-text-active);
+  width: 95%;
+  font-family: inherit;
+  outline: none;
+}
+/************************************************************
+todos container
+*********************/
+
+.nothing-to-do {
+  border-radius: 5px 5px 0 0;
+  justify-content: center;
+}
+
+/************************************************************
+todo item
+*********************/
+.todo-list {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+    /* transition: all .5s ease; */
+}
+
+.todo {
+  border-radius: 0;
+  border-bottom: 1px solid var(--color-text-1);
+  transition: all .5s ease;
+}
+
+.todo:first-child {
+  border-radius: 8px 8px 0 0; 
+}
+
+.fake-checkbox {
+  margin-right: 1rem;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 100%;
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkbox {
+  cursor: pointer;
+  opacity: 0;
+  position: absolute;
+}
+
+.fake-checkbox:hover {
+  border-color: var(--gradient-primary);
+}
+
+.check-mark {
+  display: none;
+}
+
+.checkbox:checked + .todo-text .fake-checkbox {
+  background-image: var(--gradient-primary);
+}
+
+.checkbox:checked + .todo-text .fake-checkbox .check-mark {
+  display: initial;
+}
+
+.checkbox:checked ~ .todo-text{
+  text-decoration: line-through;
+  color: var(--color-text-completed);
+}
+
+.todo-text {
+  flex: 1;
+  color: var(--color-text-active);
+  cursor: pointer;
+  display: flex;
+  align-content: center;
+}
+
+#delete {
+  pointer-events: none;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.delete{
+  cursor: pointer;
+}
+
+.todo:hover #delete {
+  opacity: 1;
+}
+
+.fall {
+  transform: translateY(8rem) rotate(20deg);
+  opacity: 0;
+}
+/************************************************************
+end-list bar
+*********************/
+.end-list {
+  border-top: 1px solid var(--color-text-1);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border-radius: 0 0 5px 5px;
+}
+
+#clear-completed {
+  cursor: pointer;
+}
+
+#clear-completed:hover,
+input[type="radio"]:hover + label {
+  color: var(--color-text-active)
+}
+
+.mobile-view {
+  width: 100%;
+}
+
+.desktop-view {
+  display: none;
+  transition: all 0.3s ease;
+}
+/************************************************************
+filter bar
+*********************/
+.filter {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5em;
+  padding-right: 0;
+}
+
+.filter li {
+  list-style: none;
+  padding: 0 0.5rem;
+  cursor: pointer;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.filter label, .filter1 label{
+  cursor: pointer;
+}
+
+input[type="radio"]:checked + label{
+  color: var(--color-bright-blue)
+}
+
+.reorder-instruction {
+  color: var(--color-text-1);
+  margin-top: 4.5rem;
+  text-align: center
+}
+
+/************************************************************
+media queries
+*********************/
+@media (min-width: 375px) {
+  body {
+    background-image: var(--bg-img-desktop);
+    font-size: 1.8rem;
+  }
+
+  .mobile-view {
+    display: none;
+  }
+
+  .desktop-view {
+    display: block;
+    width: 100%;
+    transition: all 0.3s ease;
+  }
+
+  h1 {
+    font-size: 4rem;
+  }
+
+  form input {
+    font: inherit;
+  }
+
+  .filter1 {
+    /* width: 30%; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: -4rem;
+    gap: 0.8em;
+  }
+
+  header,
+  main {
+    max-width: 48ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
