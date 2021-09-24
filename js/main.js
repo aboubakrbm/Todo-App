@@ -6,24 +6,20 @@ const todoActive = document.querySelector("#active");
 const todoCompleted = document.querySelector("#completed");
 const todoAll = document.querySelector("#all");
 let itemLeft = document.querySelectorAll(".item-left");
-const deleteCompletedButton = document.querySelector(".clear-completed");
 const nothingTodo = document.querySelector(".nothing-to-do");
 const clearAllCompletedButton = document.querySelector(".clear-all-completed");
-const resetForm = document.querySelector("#todo-input").reset();
 
 //Event Listeners
 todoButton.addEventListener("click", addTodo);
 todoButton.addEventListener("click", emptyTodoList);
 todoList.addEventListener("click", todoDelete);
-todoList.addEventListener("click", emptyTodoList);
 todoActive.addEventListener("click", filterActive);
 todoCompleted.addEventListener("click", filterCompleted);
 todoAll.addEventListener("click", filterAll);
 clearAllCompletedButton.addEventListener("click", clearAllCompleted);
+clearAllCompletedButton.addEventListener("click", emptyTodoList);
 
 //Functions
-// resetForm.reset();
-
 let itemNumber = 0;
 function addTodo(event) {
   //Prevent form from submitting
@@ -79,6 +75,7 @@ function todoDelete(e) {
     trash.classList.add("fall");
     trash.addEventListener("transitionend", function () {
       this.remove();
+      emptyTodoList();
     });
   }
   if (
@@ -134,9 +131,11 @@ function filterAll() {
   }
 }
 
-
 function emptyTodoList() {
-  if (itemLeft[1].textContent.trim() == '0') {
+  if (
+    itemLeft[1].textContent.trim() == "0" &&
+    todoList.childNodes.length == 0
+  ) {
     nothingTodo.style.display = "flex";
   } else {
     nothingTodo.style.display = "none";
@@ -152,13 +151,11 @@ function clearAllCompleted(e) {
     let deletnumbers = new Array();
     let i = 0;
     while (i < todoList.childNodes.length) {
-      
       if (todoList.childNodes[i].childNodes[0].checked) {
         todoList.childNodes[i].remove();
       }
       if (todoList.childNodes[i].childNodes[0].checked === false) {
         i++;
-
       }
     }
   }
