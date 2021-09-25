@@ -40,9 +40,9 @@ function addTodo(event) {
     const newTodo = document.createElement("label");
     newTodo.setAttribute("for", completeButton.id);
     newTodo.innerHTML =
-      '<div class="fake-checkbox"><img class="check-mark" src="images/icon-check.svg" alt="check mark icon"/></div>' +
+      '<div class="fake-checkbox-wrapper"><div class="fake-checkbox"><img class="check-mark" src="images/icon-check.svg" alt="check mark icon"/></div></div>' +
+      // newTodo.innerText = todoInput.value;
       todoInput.value;
-    // newTodo.innerText = todoInput.value;
     newTodo.classList.add("todo-text");
     todoDiv.appendChild(newTodo);
     //Delete button
