@@ -5,7 +5,7 @@ const todoList = document.querySelector(".todo-list");
 const todoActive = document.querySelector("#active");
 const todoCompleted = document.querySelector("#completed");
 const todoAll = document.querySelector("#all");
-let itemLeft = document.querySelectorAll(".item-left");
+let itemLeft = document.querySelector(".item-left");
 const nothingTodo = document.querySelector(".nothing-to-do");
 const clearAllCompletedButton = document.querySelector(".clear-all-completed");
 
@@ -13,6 +13,8 @@ const clearAllCompletedButton = document.querySelector(".clear-all-completed");
 todoButton.addEventListener("click", addTodo);
 todoButton.addEventListener("click", emptyTodoList);
 todoList.addEventListener("click", todoDelete);
+todoList.addEventListener("click", filterCompletedAuto);
+todoList.addEventListener("click", filterActiveAuto);
 todoActive.addEventListener("click", filterActive);
 todoCompleted.addEventListener("click", filterCompleted);
 todoAll.addEventListener("click", filterAll);
@@ -25,7 +27,8 @@ function addTodo(event) {
   //Prevent form from submitting
   event.preventDefault();
 
-  if (todoInput.value.length > 0) {
+  if (todoInput.value.length == 0) console.log("empty input");
+  else {
     //Create todo item
     const todoDiv = document.createElement("div");
     todoDiv.classList.add("todo");
@@ -56,14 +59,13 @@ function addTodo(event) {
     //Clear todo input value
     todoInput.value = "";
 
+    // items left increment
     itemNumber++;
-    for (let i = 0; i < itemLeft.length; i++) {
-      itemLeft[i].innerHTML = itemNumber;
-    }
-    //whenever add newTodo all filter checked
+    itemLeft.innerHTML = itemNumber;
+
+    //whenever newTodo added, 'all' filter button checked & filterAll().
     todoAll.checked = true;
-  } else {
-    console.log("empty input");
+    filterAll();
   }
 }
 
@@ -83,25 +85,20 @@ function todoDelete(e) {
     item.parentElement.childNodes[0].checked == false
   ) {
     itemNumber--;
-    for (let i = 0; i < itemLeft.length; i++) {
-      itemLeft[i].innerHTML = itemNumber;
-    }
+    itemLeft.innerHTML = itemNumber;
   }
 }
 
+// add or subtruct 1 from items left when check or uncheck a todo
 todoList.addEventListener("click", (e) => {
   const item = e.target;
   if (item.classList[0] == "checkbox") {
     if (item.checked) {
       itemNumber--;
-      for (let i = 0; i < itemLeft.length; i++) {
-        itemLeft[i].innerHTML = itemNumber;
-      }
+      itemLeft.innerHTML = itemNumber;
     } else {
       itemNumber++;
-      for (let i = 0; i < itemLeft.length; i++) {
-        itemLeft[i].innerHTML = itemNumber;
-      }
+      itemLeft.innerHTML = itemNumber;
     }
   }
 });
@@ -115,48 +112,50 @@ function filterCompleted() {
   }
 }
 
+function filterCompletedAuto(e) {
+  const item = e.target;
+  if (
+    item.classList[0] == "checkbox" &&
+    item.checked == false &&
+    todoCompleted.checked
+  )
+    filterCompleted();
+}
+
+function filterActiveAuto(e) {
+  const item = e.target;
+  if (
+    item.classList[0] == "checkbox" &&
+    item.checked &&
+    todoActive.checked
+  )
+    filterActive();
+}
+
 function filterActive() {
   const todos = todoList.childNodes;
   for (let i = 0; i < todos.length; i++) {
-    if (todos[i].childNodes[0].checked) {
-      todos[i].style.display = "none";
-    } else todos[i].style.display = "flex";
+    if (todos[i].childNodes[0].checked) todos[i].style.display = "none";
+    else todos[i].style.display = "flex";
   }
 }
 
 function filterAll() {
   const todos = todoList.childNodes;
-  for (let i = 0; i < todos.length; i++) {
-    todos[i].style.display = "flex";
-  }
+  for (let i = 0; i < todos.length; i++) todos[i].style.display = "flex";
 }
 
 function emptyTodoList() {
-  if (
-    itemLeft[1].textContent.trim() == "0" &&
-    todoList.childNodes.length == 0
-  ) {
+  if (itemLeft.textContent.trim() == "0" && todoList.childNodes.length == 0)
     nothingTodo.style.display = "flex";
-  } else {
-    nothingTodo.style.display = "none";
-  }
+  else nothingTodo.style.display = "none";
 }
 
-emptyTodoList();
-
-function clearAllCompleted(e) {
-  const item = e.target;
-  if (item.classList[0] === "clear-all-completed") {
-    console.log(todoList.childNodes.length);
-    let deletnumbers = new Array();
-    let i = 0;
-    while (i < todoList.childNodes.length) {
-      if (todoList.childNodes[i].childNodes[0].checked) {
-        todoList.childNodes[i].remove();
-      }
-      if (todoList.childNodes[i].childNodes[0].checked === false) {
-        i++;
-      }
-    }
+function clearAllCompleted() {
+  let i = 0;
+  while (i < todoList.childNodes.length) {
+    if (todoList.childNodes[i].childNodes[0].checked)
+      todoList.childNodes[i].remove();
+    if (todoList.childNodes[i].childNodes[0].checked === false) i++;
   }
 }

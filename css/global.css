@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+
+.dark-theme {
+  --bg-img-desktop: url("/images/bg-desktop-dark.jpg");
+  --bg-img-mobile: url("/images/bg-mobile-dark.jpg");
+  --color-bg: hsl(235, 21%, 11%);
+  --color-surface: hsl(235, 24%, 19%);
+  --color-text-active: hsl(234, 39%, 85%);
+  --color-text-completed: hsl(233, 14%, 35%);
+  --color-text-1: hsl(235, 16%, 43%);
+  --color-border: #393a4b;
+  --box-shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.5);
+}
+
+.light-theme {
+  --bg-img-desktop: url("/images/bg-desktop-light.jpg");
+  --bg-img-mobile: url("/images/bg-mobile-light.jpg");
+  --color-bg: hsl(0, 0%, 98%);
+  --color-surface: hsl(0, 0%, 100%);
+  --color-text-active: hsl(235, 19%, 35%);
+  --color-text-completed: hsl(233, 11%, 84%);
+  --color-text-1: hsl(235, 9%, 61%);
+  --color-border: #e3e4f1;
+  --box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
+}
+
+:root {
+  --color-bright-blue: hsl(220, 98%, 61%);
+  --gradient-primary: linear-gradient(
+    to bottom right,
+    hsl(192, 100%, 67%),
+    hsl(280, 87%, 65%)
+  );
+}
+
+body {
+  font-size: 1.2rem;
+  font-family: "Josefin Sans", sans-serif;
+  background-color: var(--color-bg);
+  background-image: var(--bg-img-mobile);
+  background-size: auto;
+  background-repeat: no-repeat;
+  padding: 2.7em 2em 0;
+  transition: all 0.5s;
+}

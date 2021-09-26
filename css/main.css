@@ -1,52 +1,7 @@
-/************************************************************
-    Global
-**********************/
+
 @import "reset.css";
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+@import "global.css";
 
-.dark-theme {
-  --bg-img-desktop: url("/images/bg-desktop-dark.jpg");
-  --bg-img-mobile: url("/images/bg-mobile-dark.jpg");
-  --color-bg: hsl(235, 21%, 11%);
-  --color-surface: hsl(235, 24%, 19%);
-  --color-text-active: hsl(234, 39%, 85%);
-  --color-text-completed: hsl(233, 14%, 35%);
-  --color-text-1: hsl(235, 16%, 43%);
-  --color-border: #393a4b;
-  --box-shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.5);
-}
-
-.light-theme {
-  --bg-img-desktop: url("/images/bg-desktop-light.jpg");
-  --bg-img-mobile: url("/images/bg-mobile-light.jpg");
-  --color-bg: hsl(0, 0%, 98%);
-  --color-surface: hsl(0, 0%, 100%);
-  --color-text-active: hsl(235, 19%, 35%);
-  --color-text-completed: hsl(233, 11%, 84%);
-  --color-text-1: hsl(235, 9%, 61%);
-  --color-border: #e3e4f1;
-  --box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
-}
-
-:root {
-  --color-bright-blue: hsl(220, 98%, 61%);
-  --gradient-primary: linear-gradient(
-    to bottom right,
-    hsl(192, 100%, 67%),
-    hsl(280, 87%, 65%)
-  );
-}
-
-body {
-  font-size: 1.8rem;
-  font-family: "Josefin Sans", sans-serif;
-  background-color: var(--color-bg);
-  background-image: var(--bg-img-mobile);
-  background-size: auto;
-  background-repeat: no-repeat;
-  padding: 2.7em 2em 0;
-  transition: all .5s;
-}
 /************************************************************
     Header
 **********************/
@@ -58,24 +13,29 @@ header {
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   color: white;
-  letter-spacing: 1rem;
+  letter-spacing: 1.2rem;
 }
 
 .animated-tgl-btn {
   animation: mymove 1s;
 }
 @keyframes mymove {
-  0% {transform: scale(.8);}
-  50% {transform: scale(1.2);}
-  100% {transform: scale(1);}
+  0% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .toggle-theme {
   flex-basis: 1%;
   cursor: pointer;
-
 }
 /************************************************************
     main global
@@ -125,6 +85,7 @@ button {
 }
 
 .text {
+  padding-left: 1em;
   color: var(--color-text-active);
   width: 95%;
   font-family: inherit;
@@ -151,16 +112,16 @@ todo item
 .todo {
   border-radius: 0;
   border-bottom: 1px solid var(--color-text-1);
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 .todo:first-child {
-  border-radius: 8px 8px 0 0; 
+  border-radius: 8px 8px 0 0;
 }
 
 .fake-checkbox {
-  width: 1.5em;
-  height: 1.5em;
+  width: calc(1.5em - 1px);
+  height: calc(1.5em - 1px);
   border-radius: 100%;
   border: 1px solid var(--color-border);
   cursor: pointer;
@@ -175,8 +136,8 @@ todo item
   position: absolute;
 }
 
-.fake-checkbox-wrapper{
-  margin-right: 1rem;
+.fake-checkbox-wrapper {
+  margin-right: 2rem;
   padding: 1px;
 }
 
@@ -210,18 +171,17 @@ todo item
   align-items: center;
 }
 
-.checkbox:checked ~ .todo-text{
+.checkbox:checked ~ .todo-text {
   text-decoration: line-through;
   color: var(--color-text-completed);
 }
 
 #delete {
   pointer-events: none;
-  opacity: 0;
   cursor: pointer;
 }
 
-.delete{
+.delete {
   cursor: pointer;
 }
 
@@ -234,9 +194,16 @@ todo item
   opacity: 0;
 }
 /************************************************************
-end-list bar
+dashboard bar
 *********************/
-.end-list {
+.dashboard {
+  width: 100%;
+  font-size: 1.3rem;
+}
+/************************************************************
+controls bar
+*********************/
+.controls {
   border-top: 1px solid var(--color-text-1);
   display: flex;
   justify-content: space-between;
@@ -250,24 +217,17 @@ end-list bar
 
 .clear-all-completed:hover,
 input[type="radio"]:hover + label {
-  color: var(--color-text-active)
-}
-
-.mobile-view {
-  width: 100%;
-}
-
-.desktop-view {
-  display: none;
-  transition: all 0.3s ease;
+  color: var(--color-text-active);
 }
 /************************************************************
 filter bar
 *********************/
+
 .filter {
   margin-top: 2rem;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 1.5em;
   padding-right: 0;
 }
@@ -282,18 +242,19 @@ input[type="radio"] {
   display: none;
 }
 
-.filter label, .filter1 label{
+.filter label {
   cursor: pointer;
 }
 
-input[type="radio"]:checked + label{
-  color: var(--color-bright-blue)
+input[type="radio"]:checked + label {
+  color: var(--color-bright-blue);
 }
 
 .reorder-instruction {
+  font-size: 1.2rem;
   color: var(--color-text-1);
   margin-top: 4.5rem;
-  text-align: center
+  text-align: center;
 }
 
 /************************************************************
@@ -304,31 +265,22 @@ media queries
     background-image: var(--bg-img-desktop);
     font-size: 1.8rem;
   }
-
-  .mobile-view {
-    display: none;
+  .reorder-instruction {
+    font-size: 1.4rem;
   }
+}
 
-  .desktop-view {
-    display: block;
-    width: 100%;
-    transition: all 0.3s ease;
-  }
-
+@media (min-width: 600px) {
   h1 {
     font-size: 4rem;
   }
 
-  form input {
-    font: inherit;
+  .bar {
+    font-size: 1.7rem;
   }
 
-  .filter1 {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-right: -3rem;
-    gap: 0.8em;
+  form input {
+    font: inherit;
   }
 
   header,
@@ -336,5 +288,35 @@ media queries
     max-width: 48ch;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  #delete {
+    opacity: 0;
+  }
+
+  .dashboard {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr;
+    justify-items: center;
+  }
+
+  .controls {
+    font-size: 1.6rem;
+    grid-column: 1 / 4;
+    grid-row: 1;
+  }
+
+  .filter {
+    width: fit-content;
+    font-size: 1.6rem;
+    grid-column: 2;
+    grid-row: 1;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border-top: 1px solid var(--color-text-1);
+    box-shadow: 0 0;
+    border-radius: 0;
   }
 }

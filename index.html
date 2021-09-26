@@ -49,45 +49,26 @@
 
       <ul class="todo-list"></ul>
 
-      <div class="desktop-view">
-        <div class="end-list bar">
-          <span>
-            <span class="item-left">0</span> 
-            items left
-          </span>
+        <div class="dashboard">
+          <div class="controls bar">
+            <span><span class="item-left">0</span> items left</span>
 
-          <div class="filter1">
-            <input type="radio" id="all" name="filter-item" checked/>
+            <span class="clear-all-completed">Clear Completed</span>
+          </div>
+
+          <div class="filter bar">
+            <input type="radio" id="all" name="filter-item" />
             <label for="all">All</label>
+
             <input type="radio" id="active" name="filter-item" />
             <label for="active">Active</label>
+            
             <input type="radio" id="completed" name="filter-item" />
             <label for="completed">Completed</label>
           </div>
-
-          <span class="clear-all-completed">Clear Completed</span>
         </div>
-      </div>
 
-      <div class="mobile-view">
-        <div class="end-list bar">
-          <span>
-            <span class="item-left">0</span> 
-            items left
-          </span>
-          <span class="clear-all-completed">Clear Completed</span>
-        </div>
-        <div class="filter bar">
-          <input type="radio" id="all" name="filter-item" />
-          <label for="all">All</label>
-          <input type="radio" id="active" name="filter-item" />
-          <label for="active">Active</label>
-          <input type="radio" id="completed" name="filter-item" />
-          <label for="completed">Completed</label>
-        </div>
-      </div>
-
-      <p class="reorder-instruction">Drag and drop to reorder list<br> &excl; Under Construction &excl;</p>
+      <p class="reorder-instruction">Drag and drop to reorder list<br> &#9888; Under Construction &#9888;</p>
     </main>
   </body>
 </html>
