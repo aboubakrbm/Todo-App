@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="This is a todo app">
+    <meta name="description" content="This is a todo app" />
     <link
       rel="shortcut icon"
       href="/images/favicon-32x32.png"
@@ -28,12 +28,18 @@
 
     <main>
       <form class="bar" id="todo-input" autocomplete="off">
+        <span class="datetimepicker-toggle">
+          <span class="datetimepicker-toggle-button"></span>
+          <input type="datetime-local" class="datetimepicker-input" />
+        </span>
+
         <input
           class="text"
           type="text"
           name="add-todo"
           placeholder="Create a new todo..."
         />
+      
         <button type="submit" class="input-button" area-label="Add todo">
           <img
             class="cross add"
@@ -49,26 +55,29 @@
 
       <ul class="todo-list"></ul>
 
-        <div class="dashboard">
-          <div class="controls bar">
-            <span><span class="item-left">0</span> items left</span>
+      <div class="dashboard">
+        <div class="controls bar">
+          <span><span class="item-left">0</span> items left</span>
 
-            <span class="clear-all-completed">Clear Completed</span>
-          </div>
-
-          <div class="filter bar">
-            <input type="radio" id="all" name="filter-item" />
-            <label for="all">All</label>
-
-            <input type="radio" id="active" name="filter-item" />
-            <label for="active">Active</label>
-            
-            <input type="radio" id="completed" name="filter-item" />
-            <label for="completed">Completed</label>
-          </div>
+          <span class="clear-all-completed">Clear Completed</span>
         </div>
 
-      <p class="reorder-instruction">Drag and drop to reorder list<br> &#9888; Under Construction &#9888;</p>
+        <div class="filter bar">
+          <input type="radio" id="all" name="filter-item" />
+          <label for="all">All</label>
+
+          <input type="radio" id="active" name="filter-item" />
+          <label for="active">Active</label>
+
+          <input type="radio" id="completed" name="filter-item" />
+          <label for="completed">Completed</label>
+        </div>
+      </div>
+
+      <p class="reorder-instruction">
+        Drag and drop to reorder list<br />
+        &#9888; Under Construction &#9888;
+      </p>
     </main>
   </body>
 </html>

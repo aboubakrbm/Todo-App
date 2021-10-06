@@ -48,6 +48,25 @@ function addTodo(event) {
       todoInput.value;
     newTodo.classList.add("todo-text");
     todoDiv.appendChild(newTodo);
+    //Create todo time
+    const todoTime = document.createElement("p");
+    if (document.querySelector(".datetimepicker-input").value == "")
+      todoTime.innerHTML = "";
+    else {
+      let d = new Date(document.querySelector(".datetimepicker-input").value);
+      todoTime.innerHTML =
+        ("0" + d.getDate()).slice(-2) +
+        "-" +
+        ("0" + (d.getMonth() + 1)).slice(-2) +
+        "-" +
+        d.getFullYear() +
+        " " +
+        ("0" + d.getHours()).slice(-2) +
+        ":" +
+        ("0" + d.getMinutes()).slice(-2);
+    }
+    todoTime.classList.add("todo-time");
+    todoDiv.appendChild(todoTime);
     //Delete button
     const deleteButton = document.createElement("button");
     deleteButton.innerHTML =
@@ -124,11 +143,7 @@ function filterCompletedAuto(e) {
 
 function filterActiveAuto(e) {
   const item = e.target;
-  if (
-    item.classList[0] == "checkbox" &&
-    item.checked &&
-    todoActive.checked
-  )
+  if (item.classList[0] == "checkbox" && item.checked && todoActive.checked)
     filterActive();
 }
 

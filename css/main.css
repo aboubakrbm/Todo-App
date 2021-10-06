@@ -85,11 +85,50 @@ button {
 }
 
 .text {
-  padding-left: 1em;
+  padding-left: .7em;
   color: var(--color-text-active);
   width: 95%;
   font-family: inherit;
   outline: none;
+}
+
+.datetimepicker-toggle {
+  display: inline-block;
+  position: relative;
+  width: 3rem;
+  height: 2rem;
+}
+
+.datetimepicker-toggle-button {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/images/icon-calendar.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.datetimepicker-input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.datetimepicker-input::-webkit-calendar-picker-indicator {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
 }
 /************************************************************
   todos container
@@ -168,12 +207,17 @@ todo item
   color: var(--color-text-active);
   cursor: pointer;
   display: flex;
+  overflow: hidden;
   align-items: center;
 }
 
 .checkbox:checked ~ .todo-text {
   text-decoration: line-through;
   color: var(--color-text-completed);
+}
+
+.todo-time {
+  margin: 0;
 }
 
 #delete {
@@ -285,7 +329,7 @@ media queries
 
   header,
   main {
-    max-width: 48ch;
+    max-width: 50ch;
     margin-left: auto;
     margin-right: auto;
   }
@@ -319,4 +363,17 @@ media queries
     box-shadow: 0 0;
     border-radius: 0;
   }
+}
+
+.todo-text::-webkit-scrollbar {
+  width: .1em;
+}
+ 
+.todo-text::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+.todo-text::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
 }
