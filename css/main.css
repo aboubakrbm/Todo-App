@@ -307,6 +307,7 @@ media queries
 @media (min-width: 376px) {
   body {
     background-image: var(--bg-img-desktop);
+    background-size: contain;
     font-size: 1.8rem;
   }
   .reorder-instruction {
