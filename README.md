@@ -1,2 +1,2 @@
-check the website [here](https://https://fancytodoapp.netlify.app/)
+check the website [here](https://fancytodoapp.netlify.app/)
 
